@@ -1,0 +1,15 @@
+RDD Notes
+
+    RDD's are partitioned across nodes. Each node has 1 partition. can hold RDD in memory as long as size of data
+    does not surpass total memory of all nodes in cluster.
+
+    RDD's are read-only/immutable.
+
+    Only 2 types of operations: Transformations and Actions.
+       Transforms: RDD --> RDD, loading, filtering, sorting, any change in data, etc
+       Actions: Reads, counts, sums, anything that demands an actual value is an Action. An Action will cause all
+       transformations in queue to execute
+
+    Lineage: RDD knows where is came from. Each RDD only contains metadata until an action is called, at which point
+    the final RDD will materialize. Lineage is traced back to the source which allows RDD's to have resilience and
+    lazy evaluation.
