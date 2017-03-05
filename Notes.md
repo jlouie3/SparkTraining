@@ -19,16 +19,14 @@
     the final RDD will materialize. Lineage is traced back to the source which allows RDD's to have resilience and
     lazy evaluation.
 
-Operations
-Filter (transform)
-    -Transform an RDD by selecting which records remain/are removed based on TRUE/FALSE result of a specified function
+### Operations
 
-Map (transform)
-    -Transform one record into another record- input/output maintains a 1:1 relationship
-
-Reduce (action)
-    -Requires 2 arguments and a function to aggregate multiple records and reduce the total number of records in the RDD
-   
+Operation | Type | Description
+--- | --- | --- |
+Filter | Transform | Transform an RDD by selecting which records remain/are removed based on TRUE/FALSE result of a specified function
+Map | Transform | Transform one record into another record- input/output maintains a 1:1 relationship
+Reduce | Action | Requires 2 arguments and a function to aggregate multiple records and reduce the total number of records in the RDD
+  
 ## Resources Used
 * [Scala OOP Features Explained] (http://www.vasinov.com/blog/scala-oop-galore/ "This is a link")
 * [Learning Spark: Lightning-Fast Big Data Analysis (O'Reilly, 2015)] (https://www.amazon.com/Learning-Spark-Lightning-Fast-Data-Analysis/dp/1449358624)
