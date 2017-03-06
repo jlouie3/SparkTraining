@@ -28,6 +28,6 @@ Map | Transform | Transform one record into another record- input/output maintai
 Reduce | Action | Requires 2 arguments and a function to aggregate multiple records and reduce the total number of records in the RDD
   
 ## Resources Used
-* [Scala OOP Features Explained] (http://www.vasinov.com/blog/scala-oop-galore/ "This is a link")
+* [Scala OOP Features Explained] (http://www.vasinov.com/blog/scala-oop-galore/)
 * [Learning Spark: Lightning-Fast Big Data Analysis (O'Reilly, 2015)] (https://www.amazon.com/Learning-Spark-Lightning-Fast-Data-Analysis/dp/1449358624)
 * [Pluralsight: Beginning Data Exploration and Analysis with Apache Spark] (https://www.pluralsight.com/courses/apache-spark-beginning-data-exploration-analysis)

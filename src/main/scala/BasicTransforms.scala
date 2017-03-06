@@ -19,8 +19,7 @@ object BasicTransforms {
     val logFile = projectPath + "\\logfile.txt"
 
     // Import CSV data to RDD
-    var filePath = projectPath + "\\data\\nypd_7_major_felony_incidents.csv"
-    filePath = projectPath + "\\data\\apple.csv"
+    val filePath = projectPath + "\\data\\nypd_7_major_felony_incidents.csv"
     val data = sc.textFile(filePath)
 
     // Remove header row from RDD
@@ -35,6 +34,8 @@ object BasicTransforms {
     dataWithoutHeader.persist()
     val dataAsListRDD = dataWithoutHeader.map(x => x.split(",")).take(10)
     val count = dataWithoutHeader.count()
+
+    dataWithoutHeader.
 
   }
 }
