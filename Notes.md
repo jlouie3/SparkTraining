@@ -31,3 +31,11 @@ Reduce | Action | Requires 2 arguments and a function to aggregate multiple reco
 * [Scala OOP Features Explained] (http://www.vasinov.com/blog/scala-oop-galore/)
 * [Learning Spark: Lightning-Fast Big Data Analysis (O'Reilly, 2015)] (https://www.amazon.com/Learning-Spark-Lightning-Fast-Data-Analysis/dp/1449358624)
 * [Pluralsight: Beginning Data Exploration and Analysis with Apache Spark] (https://www.pluralsight.com/courses/apache-spark-beginning-data-exploration-analysis)
+
+
+## Tips:
+* Reduce Spark console verbosity
+  1. Make a copy of conf/log4j.properties.template called conf/log4j.properties
+  2. Find the following line: 'log4j.rootCategory=INFO, console'
+  3. Lower the log level so only the WARN messages show by changing it to the following: 'log4j.rootCategory=WARN, console'
+* To shut down Spark, call sc.stop() where sc is your SparkContext

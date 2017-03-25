@@ -1,7 +1,7 @@
 /**
   * Created by louie on 3/2/2017.
   */
-class classes {
+class NYPDClasses {
 
 }
 

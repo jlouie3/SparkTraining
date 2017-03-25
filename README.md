@@ -1,15 +1,27 @@
 # SparkTraining
 Sandbox for learning Spark 2.1 using resources from Pluralsight and Learning Spark (O'Reilly)
 
-##### Environment: 
+#### Scala Environment:
 * Intellij IDEA
 * Maven
-* Spark 2.1
 * Scala 2.11
+* Spark 2.1
 
-#### Notes: 
-* Reduce Spark console verbosity
-  1. Make a copy of conf/log4j.properties.template called conf/log4j.properties 
-  2. Find the following line: 'log4j.rootCategory=INFO, console'
-  3. Lower the log level so only the WARN messages show by changing it to the following: 'log4j.rootCategory=WARN, console'
-* To shut down Spark, call sc.stop() where sc is your SparkContext
+#### Python Environment:
+* PyCharm
+* Python 3.5
+* Spark 2.1
+
+## Setting up PySpark
+1. Install Java 1.8 and Python 3
+2. Install Scala 2.11
+3. Download pre-built Spark 2.1
+4. Install py4j (I used PyCharm's repository search)
+5. Add following to '~/.bash_profile'
+    'export SPARK_HOME=/My/Spark/Directory/Spark'
+    'export PYTHONPATH=$SPARK_HOME/python'
+6. In PyCharm, add 'SPARK_HOME/python/' to interpreter path
+
+### Initialize PySpark shell
+Open terminal, cd to SPARK_HOME directory, then enter './bin/pyspark --master local[2]'
+Note that '[2]' represents the # of cores used
