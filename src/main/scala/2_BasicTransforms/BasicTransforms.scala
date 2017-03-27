@@ -2,13 +2,13 @@
   * Created by louie on 3/1/2017.
   */
 import org.apache.spark.SparkContext
-import org.apache.spark.SparkContext._
 import org.apache.spark.SparkConf
+import org.apache.spark.sql.SparkSession
 
 object BasicTransforms {
   def main(args: Array[String]) : Unit = {
     // Spark Config
-    val appName = "Hello World"
+    val appName = "Basic Transforms"
     val masterURL = "local[2]"
     val memAlloc = "1g"
     val conf = new SparkConf().setAppName(appName).setMaster(masterURL).set("spark.executor.memory",memAlloc)
@@ -35,7 +35,13 @@ object BasicTransforms {
     val dataAsListRDD = dataWithoutHeader.map(x => x.split(",")).take(10)
     val count = dataWithoutHeader.count()
 
-    dataWithoutHeader.
+    /////////////////////////////////////////////////////////////////
+    // REPEAT ABOVE BUT USE SPARKSESSION AND DATAFRAME IN LIEU OF RDD
+    //////////////////////////////////////////////////////////////////
 
+    val spark = SparkSession.builder().appName(appName).getOrCreate()
+    val df_data = spark.read.option("header", value = true).csv(filePath)
+    df_data.persist()
+    val count_df = df_data.count()
   }
 }
