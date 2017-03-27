@@ -18,6 +18,7 @@
 *Lineage: RDD knows where it came from. Each RDD only contains metadata until an action is called, at which point
     the final RDD will materialize. Lineage is traced back to the source which allows RDD's to have resilience and
     lazy evaluation.
+*Be wary of using the .collect() function- it brings all information from RDD to a single host (the one running the code). It can bottleneck an application!
 
 ### Operations
 
