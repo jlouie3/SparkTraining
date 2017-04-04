@@ -1,6 +1,8 @@
+package sparksql
+
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
-import Employee._
+import model._
 /**
   * Created by louie on 3/28/2017.
   */
@@ -12,6 +14,9 @@ object SparkSQL {
     val memAlloc = "1g"
     val conf = new SparkConf().setAppName(appName).setMaster(masterURL).set("spark.executor.memory", memAlloc)
     val spark = SparkSession.builder().config(conf).getOrCreate()
+
+    // Allow use of case classes
+    import spark.implicits._
 
     // Create EMPLOYEES dataframe
     val filePath = "data/NW-Employees.csv"
@@ -31,13 +36,13 @@ object SparkSQL {
     result.show(5)
 
     // Create a second table called ORDERS
-    val orders = spark.read.option("header","true").csv(filePath + "data/NW-Orders.csv").as[Order]
+    val orders = spark.read.option("header","true").csv("data/NW-Orders.csv").as[Order]
     println("Orders has " + orders.count() + " rows")
-    orders.createOrReplaceTempView("OrderssTable")
+    orders.createOrReplaceTempView("OrdersTable")
 
     // Import ORDERS by inferring schema
     val orders_inferred = spark.read.option("header","true").option("inferSchema","true").
-      csv(filePath + "data/NW-Orders.csv").as[Order]
+      csv("data/NW-Orders.csv").as[Order]
     println("Orders has "+orders_inferred.count()+" rows")
     orders_inferred.show(5)
     orders_inferred.head()
@@ -45,7 +50,7 @@ object SparkSQL {
 
     // Create ORDER DETAILS table
     val orderDetails = spark.read.option("header","true").option("inferSchema","true").
-      csv(filePath + "data/NW-Order-Details.csv").as[OrderDetails]
+      csv("data/NW-Order-Details.csv").as[OrderDetails]
     println("Order Details has "+orderDetails.count()+" rows")
     orderDetails.show(5)
     orderDetails.head()
