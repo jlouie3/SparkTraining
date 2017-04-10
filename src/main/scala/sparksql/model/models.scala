@@ -3,7 +3,7 @@
 /**
   * Created by louie on 4/3/2017.
   */
-package sparksql.model
+package main.scala.sparksql.model
 
 case class Employee(EmployeeID : String,
                     LastName : String,

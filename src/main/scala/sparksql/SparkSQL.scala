@@ -2,7 +2,7 @@ package sparksql
 
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
-import model._
+import main.scala.sparksql.model._
 /**
   * Created by louie on 3/28/2017.
   */
@@ -18,7 +18,7 @@ object SparkSQL {
     // Allow use of case classes
     import spark.implicits._
 
-    // Create EMPLOYEES dataframe
+    // Create EMPLOYEES dataset
     val filePath = "data/NW-Employees.csv"
     val employees = spark.read.option("header", "true").csv(filePath).as[Employee]
     println("employees has " + employees.count() + " rows")
@@ -35,6 +35,7 @@ object SparkSQL {
     result = spark.sql("SELECT * from EmployeesTable WHERE State = 'WA'")
     result.show(5)
 
+
     // Create a second table called ORDERS
     val orders = spark.read.option("header","true").csv("data/NW-Orders.csv").as[Order]
     println("Orders has " + orders.count() + " rows")
@@ -47,6 +48,7 @@ object SparkSQL {
     orders_inferred.show(5)
     orders_inferred.head()
     orders_inferred.dtypes // verify column types
+
 
     // Create ORDER DETAILS table
     val orderDetails = spark.read.option("header","true").option("inferSchema","true").
